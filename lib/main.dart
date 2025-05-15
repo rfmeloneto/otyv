@@ -1,10 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:otyv/datasource/client/client.dart';
 import 'package:otyv/datasource/client/dio_client.dart';
 import 'package:otyv/datasource/prompt_datasource_imp.dart';
+import 'package:otyv/presenter/prompt_page.dart';
 import 'package:otyv/viewmodel/prompt_viewmodel.dart';
 import 'package:otyv/viewmodel/repository_prompt_imp.dart';
 import 'package:provider/provider.dart';
@@ -45,47 +43,3 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class PromptPage extends StatefulWidget {
-  PromptPage({super.key});
-
-  @override
-  State<PromptPage> createState() => _PromptPageState();
-}
-
-class _PromptPageState extends State<PromptPage> {
-  final _random = Random(); 
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Gerador de Prompt'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Text(
-                context.watch<PromptViewModel>().prompt,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                print("botão");
-                final number = _random.nextInt(10) + 1; 
-                context.read<PromptViewModel>().getPrompt(number, "a"); 
-              },
-              child: Text("Gerar Novo Prompt"), 
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
