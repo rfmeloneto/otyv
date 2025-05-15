@@ -12,4 +12,22 @@ class Object{
       this.isActive = true,
     }
   );
+
+  factory Object.fromJson(Map<String, dynamic> json) {
+    return Object(
+      id: json['id'],
+      name: json['name'],
+      description: json['description'],
+      isActive: json['is_active'],
+    );
+  }
+
+  Map<String, dynamic> toJson(){
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'is_active': isActive,
+    };
+  }
 }
