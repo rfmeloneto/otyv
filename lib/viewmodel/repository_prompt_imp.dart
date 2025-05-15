@@ -9,7 +9,9 @@ class RepositoryPromptImp implements Repository {
   RepositoryPromptImp(this.datasource);
 
   Future<Prompt> getPrompt(int number, String letter) async {
-    return await datasource.getPrompt(number, letter);
+    print("Entrou no repository");
+    final data = await datasource.getPrompt(number, letter);
+    return data;
   }
 
   }

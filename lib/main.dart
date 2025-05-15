@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:otyv/datasource/client/client.dart';
@@ -18,7 +20,7 @@ void main() async {
     anonKey: dotenv.env['SUPABASE_KEY']!, 
   );
 
-  runApp(const MainApp());
+  runApp(MainApp());
 
 }
 
@@ -26,29 +28,64 @@ final supabase = Supabase.instance.client;
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+  
   @override
   Widget build(BuildContext context) {
-    return     MultiProvider(
+    return MultiProvider(
       providers: [
         Provider(create: (context) => DioClient()),
         Provider<PromptDatasourceImp>(create: (context)=> PromptDatasourceImp(context.read<DioClient>())),
         Provider<RepositoryPromptImp>(create: (context)=> RepositoryPromptImp(context.read<PromptDatasourceImp>())),
         ChangeNotifierProvider<PromptViewModel>(create: (context)=> PromptViewModel(context.read<RepositoryPromptImp>()))
-        ],
-    child: MaterialApp(
-      home: Scaffold(
-        body: Column(
+      ],
+      child: MaterialApp(
+        home: PromptPage(), 
+      ),
+    );
+  }
+}
+
+class PromptPage extends StatefulWidget {
+  PromptPage({super.key});
+
+  @override
+  State<PromptPage> createState() => _PromptPageState();
+}
+
+class _PromptPageState extends State<PromptPage> {
+  final _random = Random(); 
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Gerador de Prompt'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Center(
-              child: Text(''),
+              child: Text(
+                context.watch<PromptViewModel>().prompt,
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
             ),
-            ElevatedButton(onPressed: (){
-              context.read<PromptViewModel>().getPrompt(2,"a");
-            },
-            child: Text("Apertar"))
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                print("botão");
+                final number = _random.nextInt(10) + 1; 
+                context.read<PromptViewModel>().getPrompt(number, "a"); 
+              },
+              child: Text("Gerar Novo Prompt"), 
+            )
           ],
         ),
       ),
-    ),);
+    );
   }
 }
