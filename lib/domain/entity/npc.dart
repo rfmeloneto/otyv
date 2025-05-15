@@ -1,5 +1,6 @@
 class Npc{
   final int id;
+  final int gameId;
   final String name;
   final String description;
   bool isActive;
@@ -7,6 +8,7 @@ class Npc{
 
   Npc({
     required this.id,
+    required this.gameId,
     required this.name,
     required this.description,
     this.isActive = true,
@@ -16,6 +18,7 @@ class Npc{
   factory Npc.fromJson(Map<String, dynamic> json) {
     return Npc(
       id: json['id'],
+      gameId: json['game_id'],
       name: json['name'],
       description: json['description'],
       isActive: json['is_active'],
@@ -27,6 +30,7 @@ class Npc{
   Map<String, dynamic> toJson(){
       return {
       'id': id,
+      'game_id': gameId,
       'name': name,
       'description': description,
       'is_active': isActive,
