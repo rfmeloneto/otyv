@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:otyv/viewmodel/repository_prompt_imp.dart';
+import 'package:otyv/datasource/repository_prompt_imp.dart';
 
 class PromptViewModel extends ChangeNotifier {
   final RepositoryPromptImp repository;

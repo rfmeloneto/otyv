@@ -4,7 +4,7 @@ import 'package:otyv/datasource/client/dio_client.dart';
 import 'package:otyv/datasource/prompt_datasource_imp.dart';
 import 'package:otyv/presenter/prompt_page.dart';
 import 'package:otyv/viewmodel/prompt_viewmodel.dart';
-import 'package:otyv/viewmodel/repository_prompt_imp.dart';
+import 'package:otyv/datasource/repository_prompt_imp.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
