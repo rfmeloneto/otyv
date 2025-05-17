@@ -1,15 +1,13 @@
-class Memory{
+class Memory {
   final int id;
   final int gameId;
-  final String title;
-  final String description;
+  final int diaryId;
   final bool isActive;
 
   Memory({
     required this.id,
     required this.gameId,
-    required this.title,
-    required this.description,
+    required this.diaryId,
     required this.isActive,
   });
 
@@ -17,20 +15,17 @@ class Memory{
     return Memory(
       id: json['id'],
       gameId: json['game_id'],
-      title: json['title'],
-      description: json['description'],
+      diaryId: json['diary_id'],
       isActive: json['isActive'],
     );
   }
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'game_id': gameId,
-      'title': title,
-      'description': description,
+      'diary_id': diaryId,
       'isActive': isActive,
     };
   }
-
-  }
+}

@@ -1,8 +1,7 @@
-class Game{
+class Game {
   final int id;
   final int currentNumber;
   final String currentLetter;
-  
 
   Game({
     required this.id,
@@ -26,4 +25,3 @@ class Game{
     };
   }
 }
-
