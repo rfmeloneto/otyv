@@ -17,6 +17,14 @@ class Game {
     );
   }
 
+  static List<Game> gameListFromJson(List<dynamic> json) {
+    List<Game> games = [];
+    for (var item in json) {
+      games.add(Game.fromJson(item));
+    }
+    return games;
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,

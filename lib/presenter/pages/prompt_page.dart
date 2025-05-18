@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:otyv/viewmodel/prompt_viewmodel.dart';
+import 'package:otyv/presenter/viewmodel/prompt_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class PromptPage extends StatelessWidget {
