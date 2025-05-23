@@ -15,4 +15,10 @@ class SelectGameViewmodel extends ChangeNotifier {
     _games = await _repositoryGameImp.getGames();
     notifyListeners();
   }
+
+  void newGame() async {
+    await _repositoryGameImp.newGame();
+    getGames();
+    
+  }
 }

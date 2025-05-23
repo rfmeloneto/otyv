@@ -16,4 +16,16 @@ class GameDataSource implements DataSource {
       throw Exception('Erro ao buscar jogos: $error');
     }
   }
+
+  Future<void> newGame() async {
+    try {
+      final response = await supabase.from('games').insert({
+        'current_number': 1,
+        'current_letter': 'a',
+      });
+    } catch (e) {
+      print('Uma exceção ocorreu: $e');
+      throw Exception('Erro ao inserir dados: $e');
+    }
+  }
 }

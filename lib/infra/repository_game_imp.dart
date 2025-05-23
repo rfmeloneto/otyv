@@ -10,4 +10,8 @@ class RepositoryGameImp implements Repository {
   Future<List<Game>> getGames() async {
     return await gameDataSource.getGames();
   }
+
+  Future<void> newGame() async {
+    await gameDataSource.newGame();
+  }
 }
