@@ -54,7 +54,16 @@ class _SelectGamePageState extends State<SelectGamePage> {
                                     width: 200,
                                     child: ClickcableCard(
                                       color: Color(0xFFD9B7B0),
+                                      trail: Icon(Icons.delete),
                                       elevation: 2.0,
+                                      onClickTail: () {
+                                        context.read<SelectGameViewmodel>()
+                                            .deleteGame(
+                                              selectGameViewModel
+                                                .games[index]
+                                                  .id,
+                                            );
+                                      },
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
                                           10.0,

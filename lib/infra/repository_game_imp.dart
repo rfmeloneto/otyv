@@ -14,4 +14,8 @@ class RepositoryGameImp implements Repository {
   Future<void> newGame() async {
     await gameDataSource.newGame();
   }
+
+  Future<void> deleteGame(int id) async {
+    await gameDataSource.deleteGame(id);
+  }
 }

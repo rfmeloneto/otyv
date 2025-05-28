@@ -19,13 +19,22 @@ class GameDataSource implements DataSource {
 
   Future<void> newGame() async {
     try {
-      final response = await supabase.from('games').insert({
+      await supabase.from('games').insert({
         'current_number': 1,
         'current_letter': 'a',
       });
     } catch (e) {
       print('Uma exceção ocorreu: $e');
       throw Exception('Erro ao inserir dados: $e');
+    }
+  }
+
+  Future<void> deleteGame(int id) async {
+    try {
+      await supabase.from('games').delete().eq('id', id);
+    } catch (e) {
+      print('Uma exceção ocorreu: $e');
+      throw Exception('Erro ao deletar dados: $e');
     }
   }
 }

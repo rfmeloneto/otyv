@@ -19,6 +19,10 @@ class SelectGameViewmodel extends ChangeNotifier {
   void newGame() async {
     await _repositoryGameImp.newGame();
     getGames();
-    
+  }
+
+  void deleteGame(int id) async {
+    await _repositoryGameImp.deleteGame(id);
+    getGames();
   }
 }

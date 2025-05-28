@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:otyv/presenter/pages/prompt_page.dart';
 import 'package:otyv/presenter/pages/select_game_page.dart';
 import 'package:otyv/shared/providers.dart';
 import 'package:provider/provider.dart';
